@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package order;
+
+enum OrderSide {
+  ORDER_SIDE_UNDEFINED = 0;
+  ORDER_SIDE_BUY = 1;
+  ORDER_SIDE_SELL = 2;
+}

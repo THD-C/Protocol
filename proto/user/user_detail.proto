@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package user;
+
+// Detailed information about the user, typically used for profile or identity verification.
+message UserDetail {
+  // Unique string ID for user details. Can be opaque and encoded if necessary.
+  string id = 1;
+
+  // User's first name.
+  string name = 2;
+
+  // User's last name (surname).
+  string surname = 3;
+
+  // City where the user resides.
+  string city = 4;
+
+  // Postal code for the user's address.
+  string postal_code = 5;
+
+  // Street name where the user lives.
+  string street = 6;
+
+  // Building number of the user's residence.
+  string building = 7;
+}

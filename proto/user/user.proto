@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package user;
+
+// Represents a system user with login credentials.
+message User {
+  // Unique string ID of the user in the system.
+  string id = 1;
+
+  // User's login name. Must be unique across the system.
+  string username = 2;
+}
+
+message UserList {
+  repeated User users = 1;
+}

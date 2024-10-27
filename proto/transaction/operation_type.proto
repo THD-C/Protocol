@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package transaction;
+
+enum OperationType {
+  OPERATION_TYPE_UNDEFINED = 0;    // Undefined.
+  OPERATION_TYPE_IN = 1;           // Funds added to wallet.
+  OPERATION_TYPE_OUT = 2;          // Funds withdrawn from wallet.
+  OPERATION_TYPE_ORDER_IN = 3;     // Funds added from an order.
+  OPERATION_TYPE_ORDER_OUT = 4;    // Funds withdrawn due to an order.
+}

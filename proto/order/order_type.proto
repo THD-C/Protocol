@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package order;
+
+enum OrderType {
+  ORDER_TYPE_UNDEFINED = 0;     // Undefined state
+  ORDER_TYPE_STOP_LOSS = 1;     // Sell when a certain price below current price is reached.
+  ORDER_TYPE_TAKE_PROFIT = 2;   // Sell when a certain price above current price is reached.
+  ORDER_TYPE_INSTANT = 3;       // Immediate execution.
+}

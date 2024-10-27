@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package wallet;
+
+// Represents a user's wallet containing currency and its balance.
+message Wallet {
+  // Unique string ID of the wallet.
+  string id = 1;
+
+  // Currency type (e.g., USD, EUR) stored in this wallet.
+  string currency = 2;
+
+  // Current balance of the wallet in the specified currency.
+  string value = 3;
+}
+
+// Represents a list of Wallet messages.
+message WalletList {
+  // Repeated field containing multiple Wallet messages.
+  repeated Wallet wallets = 1;
+}

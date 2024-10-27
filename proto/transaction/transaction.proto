@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package transaction;
+
+import "transaction/operation_type.proto";
+import "google/protobuf/timestamp.proto";
+
+// Represents a financial transaction affecting a wallet.
+message Transaction {
+  // Unique string ID for the transaction.
+  string id = 1;
+
+  // Date when the transaction occurred.
+  google.protobuf.Timestamp date = 2;
+
+  // Type of transaction operation.
+  OperationType operation_type = 3;
+
+  // Nominal value of the transaction (amount of currency affected), stored as string for flexibility.
+  string nominal_value = 4;
+}

@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package order;
+
+import "order/order_status.proto";
+import "order/order_type.proto";
+import "order/order_side.proto";
+import "google/protobuf/timestamp.proto";
+
+// Represents a currency order placed by the user, such as buying or selling currency.
+message Order {
+  // Unique string ID of the order.
+  string id = 1;
+
+  // Foreign key referencing the User who placed the order.
+  string user_id = 2;
+
+  // Date when the order was created.
+  google.protobuf.Timestamp date_created = 3;
+
+  // Date when the order was executed.
+  google.protobuf.Timestamp date_executed = 4;
+
+  // Current status of the order.
+  OrderStatus status = 5;
+
+  // Currency being bought or sold (e.g., USD, EUR).
+  string currency = 6;
+
+  // Amount of currency involved in the order.
+  string nominal = 7;
+
+  // Amount of cash involved in the order, can be NULL if irrelevant.
+  string cash_quantity = 8;
+
+  // Price per unit of currency, represented as a string for precision.
+  string price = 9;
+
+  // Type of the order (e.g., stop loss, take profit).
+  OrderType type = 10;
+
+  // Side of the order.
+  OrderSide side = 11;
+}
