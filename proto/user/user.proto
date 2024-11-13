@@ -2,15 +2,34 @@ syntax = "proto3";
 
 package user;
 
-// Represents a system user with login credentials.
-message User {
-  // Unique string ID of the user in the system.
-  string id = 1;
-
-  // User's login name. Must be unique across the system.
-  string username = 2;
+service User {
+    rpc Authenticate (AuthUser) returns (AuthResponse);
+    rpc Register (RegUser) returns (RegResponse); 
 }
 
-message UserList {
-  repeated User users = 1;
+message RegUser {
+    string username = 1;
+    string email = 2;
+    string password = 3;
+
+    string name = 4;
+    string surname = 5;
+    string street = 6;
+    string building = 7;
+    string city = 8;
+    string postal_code = 9;
+    string country = 10;
+}
+
+message AuthUser {
+    string email = 1;
+    string password = 2;
+}
+
+message AuthResponse {
+    bool success = 1;
+}
+
+message RegResponse {
+    bool success = 1;
 }
