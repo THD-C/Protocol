@@ -2,6 +2,14 @@ syntax = "proto3";
 
 package wallet;
 
+import "user/user_detail.proto";
+
+service Wallets{
+  rpc createWallet (Wallet) returns (Wallet);
+  rpc updateWallet (Wallet) returns (Wallet);
+  rpc getUsersWallets (user.UserDetail) returns (WalletList);
+}
+
 // Represents a user's wallet containing currency and its balance.
 message Wallet {
   // Unique string ID of the wallet.
