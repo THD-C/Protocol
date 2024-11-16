@@ -7,7 +7,9 @@ import "user/user_detail.proto";
 service Wallets{
   rpc createWallet (Wallet) returns (Wallet);
   rpc updateWallet (Wallet) returns (Wallet);
-  rpc getUsersWallets (user.UserDetail) returns (WalletList);
+  rpc deleteWallet (WalletID) returns (Wallet);
+  rpc getWallet (WalletID) returns (Wallet);
+  rpc getUsersWallets (UserID) returns (WalletList);
 }
 
 // Represents a user's wallet containing currency and its balance.
@@ -29,4 +31,12 @@ message Wallet {
 message WalletList {
   // Repeated field containing multiple Wallet messages.
   repeated Wallet wallets = 1;
+}
+
+message UserID {
+  string id = 1;
+}
+
+message WalletID {
+  string id = 1;
 }
