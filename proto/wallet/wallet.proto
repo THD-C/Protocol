@@ -12,6 +12,9 @@ message Wallet {
 
   // Current balance of the wallet in the specified currency.
   string value = 3;
+
+  //string ID of the wallet's owner
+  string user_id = 4;
 }
 
 // Represents a list of Wallet messages.
