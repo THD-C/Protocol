@@ -22,7 +22,7 @@ message RegUser {
 }
 
 message AuthUser {
-    string email = 1;
+    string login = 1;
     string password = 2;
 }
 
