@@ -4,7 +4,9 @@ package user;
 
 service User {
     rpc Authenticate (AuthUser) returns (AuthResponse);
-    rpc Register (RegUser) returns (RegResponse); 
+    rpc Register (RegUser) returns (RegResponse);
+    rpc Update (ReqUpdateUser) returns (ResultResponse);
+    rpc Delete (ReqDeleteUser) returns (ResultResponse);
 }
 
 message RegUser {
@@ -35,4 +37,29 @@ message AuthResponse {
 
 message RegResponse {
     bool success = 1;
+}
+
+message ReqUpdateUser {
+    string id = 1;
+    string email = 2;
+    string password = 3;
+
+    string name = 4;
+    string surname = 5;
+    string street = 6;
+    string building = 7;
+    string city = 8;
+    string postal_code = 9;
+    string country = 10;
+}
+
+message ResultResponse {
+    bool success = 1;
+    string id = 2;
+}
+
+message ReqDeleteUser {
+    string id = 1;
+    string mail = 2;
+    string password = 3;
 }
