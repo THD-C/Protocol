@@ -8,14 +8,14 @@ import "order/order_side.proto";
 import "google/protobuf/timestamp.proto";
 
 service Order {
-  rpc CreateOrder(Order) returns (Order);
-  rpc DeleteOrder(OrderID) returns (Order);
-  rpc GetOrder(OrderID) returns (Order);
+  rpc CreateOrder(OrderDetails) returns (OrderDetails);
+  rpc DeleteOrder(OrderID) returns (OrderDetails);
+  rpc GetOrder(OrderID) returns (OrderDetails);
   rpc GetOrderList(UserID) returns (OrderList);
 }
 
 // Represents a currency order placed by the user, such as buying or selling currency.
-message Order {
+message OrderDetails {
   // Unique string ID of the order.
   string id = 1;
 
@@ -63,5 +63,5 @@ message UserID {
 // Represents a list of order messages.
 message OrderList {
   // Repeated field containing multiple Order messages.
-  repeated Order orders = 1;
+  repeated OrderDetails orders = 1;
 }
