@@ -10,3 +10,4 @@ permissions:
 jobs:
   Release:
     uses: THD-C/GH_Actions/.github/workflows/release.yml@main
+    secrets: inherit
