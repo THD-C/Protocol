@@ -19,7 +19,7 @@ jobs:
     uses: THD-C/Protocol/.github/workflows/compile-protobuf.yml@main
     secrets: inherit
     with:
-      name: '${{ needs.Release.outputs.version_tag }}'
+      version: ${{ needs.Release.outputs.version_tag }}
 
   Build_Docker_Images:
     runs-on: ubuntu-latest
