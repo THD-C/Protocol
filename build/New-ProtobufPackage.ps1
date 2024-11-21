@@ -14,8 +14,8 @@ function Invoke-Main {
     Get-ProtobufRepo
     $ProtoDirs = Invoke-ProtobufCompiler
     Remove-ProtobufRepo
-    New-InitFilesInSubDirs -ProtoDirs $ProtoDirs
-    New-MainInitFiles -ProtoDirs $ProtoDirs
+    #New-InitFilesInSubDirs -ProtoDirs $ProtoDirs
+    #New-MainInitFiles -ProtoDirs $ProtoDirs
 }
 function Set-PythonEnv {
     pip install -r ./build/requirements.txt
