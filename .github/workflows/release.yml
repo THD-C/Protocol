@@ -14,23 +14,7 @@ jobs:
 
   Compile_Proto_Python:
     needs: Release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run Compile Proto Python
-        shell: pwsh
-        env:
-          version: ${{ needs.Release.outputs.version_tag }}
-        run: |
-          Invoke-RestMethod -Method Post -Headers @{
-              "Accept"               = "application/vnd.github+json"
-              "Authorization"        = "Bearer ${{ secrets.THDCPL_TOKEN }}"
-              "X-GitHub-Api-Version" = "2022-11-28"
-            } -Body (
-                @{
-                    ref = "main"
-                    "inputs" = @{
-                        "name" = "$($env:version)"
-                    }
-                } | ConvertTo-Json
-            ) -Uri "https://api.github.com/repos/THD-C/Proto_Python/actions/workflows/compile-protobuf.yml/dispatches"
+    uses: THD-C/Protocol/.github/workflows/compile-protobuf.yml@main
+    with:
+      name: ${{ needs.Release.outputs.version_tag }}
               
