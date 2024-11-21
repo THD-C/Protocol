@@ -28,15 +28,15 @@ jobs:
       run: |
         ./build/New-ProtobufPackage.ps1 -Version "${{ github.event.inputs.name }}"
 
-    - name: Create Release
+    - name: Get Release
       shell: pwsh
-      id: create_release
+      id: get-release
       env:
         VERSION: ${{ github.event.inputs.name }}
       run: |
-        $r = Invoke-RestMethod -Method Post -Headers @{
+        $r = Invoke-RestMethod -ContentType "application/json" -Headers @{
           "Accept"               = "application/vnd.github+json"
-          "Authorization"        = "Bearer ${{ secrets.GITHUB_TOKEN }}"
+          "Authorization"        = "Bearer $(gh auth token)"
           "X-GitHub-Api-Version" = "2022-11-28"
         } -Body $(
             @{
@@ -46,7 +46,7 @@ jobs:
                 "prerelease"             = $false
                 "generate_release_notes" = $false
             } | ConvertTo-Json
-        ) -Uri "https://api.github.com/repos/${{ github.repository }}/releases"
+        ) -Uri "https://api.github.com/repos/THD-C/Protocol/releases/tags/$($env:VERSION)"
         
         Add-Content -Path $env:GITHUB_OUTPUT -Value "release_id=$($r.id)"
 
@@ -65,7 +65,7 @@ jobs:
           -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
           -H "Content-Type: application/octet-stream" \
-          --url "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ steps.create_release.outputs.release_id }}/assets?name=${{ steps.create-archive.outputs.archive_name }}" \
+          --url "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ steps.get-release.outputs.release_id }}/assets?name=${{ steps.create-archive.outputs.archive_name }}" \
           --data-binary "@${{ steps.create-archive.outputs.archive_name }}"
 
     - name: Remove archive from disk
