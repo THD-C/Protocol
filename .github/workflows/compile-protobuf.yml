@@ -3,7 +3,7 @@ name: Compile protobuf
 on:
   workflow_call:
     inputs:
-      name:
+      version:
         description: 'version'
         type: string
         required: true
@@ -26,13 +26,13 @@ jobs:
     - name: Compile protobuf
       shell: pwsh
       run: |
-        ./build/New-ProtobufPackage.ps1 -Version "${{ github.event.inputs.name }}"
+        ./build/New-ProtobufPackage.ps1 -Version "${{ inputs.version }}"
 
-    - name: Get Release id for ${{ github.event.inputs.name }}
+    - name: Get Release id for ${{ inputs.version }}
       shell: pwsh
       id: get-release
       env:
-        VERSION: ${{ github.event.inputs.name }}
+        VERSION: ${{ inputs.version }}
       run: |
         $r = Invoke-RestMethod -ContentType "application/json" -Headers @{
           "Accept"               = "application/vnd.github+json"
