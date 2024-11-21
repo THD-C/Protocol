@@ -10,18 +10,20 @@ permissions:
 jobs:
   Release:
     uses: THD-C/GH_Actions/.github/workflows/release.yml@main
+    with:
+      build_docker: false
     secrets: inherit
 
-  Compile_Proto_Python:
+  Proto_Python:
     needs: Release
     uses: THD-C/Protocol/.github/workflows/compile-protobuf.yml@main
     secrets: inherit
     with:
-      name: ${{ needs.Release.outputs.version_tag }}
+      name: '${{ needs.Release.outputs.version_tag }}'
 
   Build_Docker_Images:
     runs-on: ubuntu-latest
-    needs: Compile_Proto_Python
+    needs: Proto_Python
     steps:
       - name: Dispatch event
         shell: pwsh
@@ -35,4 +37,4 @@ jobs:
                   ref = "main"
               } | ConvertTo-Json
           ) -Uri "https://api.github.com/repos/THD-C/The_THDc_App/actions/workflows/build.yml/dispatches"
-              
+            

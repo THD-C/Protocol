@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  Compile:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,7 +28,7 @@ jobs:
       run: |
         ./build/New-ProtobufPackage.ps1 -Version "${{ github.event.inputs.name }}"
 
-    - name: Get Release
+    - name: Get Release id for ${{ github.event.inputs.name }}
       shell: pwsh
       id: get-release
       env:
