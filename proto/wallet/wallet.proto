@@ -3,11 +3,11 @@ syntax = "proto3";
 package wallet;
 
 service Wallets{
-  rpc createWallet (Wallet) returns (Wallet);
-  rpc updateWallet (Wallet) returns (Wallet);
-  rpc deleteWallet (WalletID) returns (Wallet);
-  rpc getWallet (WalletID) returns (Wallet);
-  rpc getUsersWallets (UserID) returns (WalletList);
+  rpc CreateWallet (Wallet) returns (Wallet);
+  rpc UpdateWallet (Wallet) returns (Wallet);
+  rpc DeleteWallet (WalletID) returns (Wallet);
+  rpc GetWallet (WalletID) returns (Wallet);
+  rpc GetUsersWallets (UserID) returns (WalletList);
 }
 
 // Represents a user's wallet containing currency and its balance.
