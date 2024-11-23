@@ -12,6 +12,7 @@ service Order {
   rpc DeleteOrder(OrderID) returns (OrderDetails);
   rpc GetOrder(OrderID) returns (OrderDetails);
   rpc GetOrderList(UserID) returns (OrderList);
+  rpc UpdateOrder(OrderDetails) returns (OrderDetails);
 }
 
 // Represents a currency order placed by the user, such as buying or selling currency.
