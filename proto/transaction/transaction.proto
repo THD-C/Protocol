@@ -5,17 +5,45 @@ package transaction;
 import "transaction/operation_type.proto";
 import "google/protobuf/timestamp.proto";
 
+service Transaction {
+  rpc CreateTransaction(TransactionDetails) returns (TransactionDetails);
+  rpc DeleteTransaction(TransactionID) returns (TransactionDetails);
+  rpc UpdateTransaction(TransactionDetails) returns (TransactionDetails);
+  rpc GetTransaction(TransactionID) returns (TransactionDetails);
+  rpc GetTransactionList(WalletID) returns (TransactionList);
+}
+
 // Represents a financial transaction affecting a wallet.
-message Transaction {
+message TransactionDetails {
   // Unique string ID for the transaction.
   string id = 1;
 
   // Date when the transaction occurred.
   google.protobuf.Timestamp date = 2;
 
-  // Type of transaction operation.
-  OperationType operation_type = 3;
+  // Nominal value of the transaction (amount of currency affected), stored as
+  // string for flexibility.
+  string nominal_value = 3;
 
-  // Nominal value of the transaction (amount of currency affected), stored as string for flexibility.
-  string nominal_value = 4;
+  // Type of transaction operation.
+  OperationType operation_type = 4;
+
+  // Wallet ID
+  string wallet_id = 5;
+}
+
+message TransactionID {
+  // Unique string ID of the transaction to delete.
+  string id = 1;
+}
+
+message WalletID {
+  // Unique string ID of the wallet to delete.
+  string id = 1;
+}
+
+// Represents a list of transaction messages.
+message TransactionList {
+  // Repeated field containing multiple transaction messages.
+  repeated TransactionDetails transactions = 1;
 }
