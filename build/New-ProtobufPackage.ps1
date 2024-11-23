@@ -33,6 +33,7 @@ function Invoke-ProtobufCompiler {
     foreach ($file in $ProtoFiles) {
         $ProtoFilePath = (Resolve-Path -Path $file.FullName -Relative -RelativeBasePath $PROTO_PATH).Replace("./", "")
         $ProtoDirs += $(Split-Path -Path $ProtoFilePath -Parent)
+        Write-Host "python -m grpc_tools.protoc --proto_path=./Protocol/proto/ --python_out=. --grpc_python_out=. --pyi_out=. `"$ProtoFilePath`""
         python -m grpc_tools.protoc --proto_path=./Protocol/proto/ --python_out=. --grpc_python_out=. --pyi_out=. "$ProtoFilePath"
     }
 
