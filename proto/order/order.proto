@@ -49,6 +49,8 @@ message OrderDetails {
 
   // Side of the order.
   OrderSide side = 11;
+
+  string wallet_id = 12;
 }
 
 message OrderID {
