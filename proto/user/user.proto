@@ -8,6 +8,13 @@ service User {
     rpc GetUserDetails (ReqGetUserDetails) returns (UserDetails);
     rpc Update (ReqUpdateUser) returns (ResultResponse);
     rpc Delete (ReqDeleteUser) returns (ResultResponse);
+    rpc ChangePassword (ChangePass) returns (ResultResponse);
+}
+
+message ChangePass {
+    string login = 1;
+    string old_password = 2;
+    string new_passoword = 3;
 }
 
 message RegUser {
