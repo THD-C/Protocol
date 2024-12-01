@@ -14,7 +14,7 @@ service User {
 message ChangePass {
     string login = 1;
     string old_password = 2;
-    string new_passoword = 3;
+    string new_password = 3;
 }
 
 message RegUser {
