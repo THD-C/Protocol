@@ -32,9 +32,6 @@ message OrderDetails {
   // Current status of the order.
   OrderStatus status = 5;
 
-  // Currency being bought or sold (e.g., USD, EUR).
-  string currency = 6;
-
   // Amount of currency involved in the order.
   string nominal = 7;
 
@@ -50,7 +47,11 @@ message OrderDetails {
   // Side of the order.
   OrderSide side = 11;
 
-  string wallet_id = 12;
+  //Wallet_id of crypto wallet
+  string crypto_wallet_id = 12;
+
+  //Wallet_id of Fiat currency wallet
+  string fiat_wallet_id = 13;
 }
 
 message OrderID {
