@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package payment;
+
+import "payment/payment_state.proto";
+
+service Payment {
+    rpc CreatePayment (PaymentDetails) returns (PaymentDetails);
+    rpc UpdatePayment (PaymentDetails) returns (PaymentDetails);
+    rpc GetPayment (UserID) returns (PaymentList);
+}
+
+message PaymentDetails {
+    string user_id = 1;
+    string currency = 2;
+    string nominal = 3;
+    PaymentState state = 4;
+}
+
+message UserID {
+    string user_id = 1;
+}
+
+message PaymentList {
+    repeated PaymentDetails payments = 1;
+}

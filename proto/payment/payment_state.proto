@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package payment;
+
+enum PaymentState {
+    PAYMENT_STATE_UNKNOWN = 0;
+    PAYMENT_STATE_PENDING = 1;
+    PAYMENT_STATE_ACCEPTED = 2;
+    PAYMENT_STATE_CANCELLED = 3;
+}
