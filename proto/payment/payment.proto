@@ -11,7 +11,7 @@ service Payment {
 }
 
 message PaymentDetails {
-    string id = 1
+    string id = 1;
     string user_id = 2;
     string currency = 3;
     string nominal = 4;
