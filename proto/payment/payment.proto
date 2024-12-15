@@ -11,10 +11,11 @@ service Payment {
 }
 
 message PaymentDetails {
-    string user_id = 1;
-    string currency = 2;
-    string nominal = 3;
-    PaymentState state = 4;
+    string id = 1
+    string user_id = 2;
+    string currency = 3;
+    string nominal = 4;
+    PaymentState state = 5;
 }
 
 message UserID {
