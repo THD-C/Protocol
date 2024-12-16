@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package order;
+
+import "order/order_status.proto";
+import "order/order_type.proto";
+import "order/order_side.proto";
+import "google/protobuf/timestamp.proto";
+
+service Coins {
+  rpc GetCoinData(CoinId) returns (CoinData);
+}
+
+message CoinId {
+  string coin_id = 1;
+}
+
+message CoinData {
+  string coin_id = 1;
+  string coin_data = 2;
+}
