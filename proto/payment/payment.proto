@@ -7,7 +7,9 @@ import "payment/payment_state.proto";
 service Payment {
     rpc CreatePayment (PaymentDetails) returns (PaymentDetails);
     rpc UpdatePayment (PaymentDetails) returns (PaymentDetails);
-    rpc GetPayment (UserID) returns (PaymentList);
+    rpc GetPayments (UserID) returns (PaymentList);
+    rpc GetPayment (PaymentID) returns (PaymentDetails);
+    rpc GetUnpaidPayments (UnpaidSessions) returns (PaymentList);
 }
 
 message PaymentDetails {
@@ -22,6 +24,14 @@ message UserID {
     string user_id = 1;
 }
 
+message PaymentID {
+    string id = 1;
+}
+
 message PaymentList {
     repeated PaymentDetails payments = 1;
+}
+
+message UnpaidSessions{
+    bool unpaid = 1;
 }
