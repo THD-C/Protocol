@@ -1,11 +1,6 @@
 syntax = "proto3";
 
-package order;
-
-import "order/order_status.proto";
-import "order/order_type.proto";
-import "order/order_side.proto";
-import "google/protobuf/timestamp.proto";
+package coins;
 
 service Coins {
   rpc GetCoinData(CoinId) returns (CoinData);
