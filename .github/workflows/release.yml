@@ -11,7 +11,7 @@ jobs:
   Release:
     uses: THD-C/GH_Actions/.github/workflows/release.yml@main
     with:
-      build_docker: false
+      ServiceRepository: ''
     secrets: inherit
 
   Proto_Python:
