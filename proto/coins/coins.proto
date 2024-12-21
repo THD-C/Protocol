@@ -3,18 +3,12 @@ syntax = "proto3";
 package coins;
 
 service Coins {
-  rpc GetCoinData(CoinDataRequest) returns (CoinDataResponse);
-  rpc GetHistoricalData (HistoricalDataRequest) returns (HistoricalDataResponse);
+  rpc GetCoinData(CoinDataRequest) returns (DataResponse);
+  rpc GetHistoricalData (HistoricalDataRequest) returns (DataResponse);
 }
 
 message CoinDataRequest {
   string coin_id = 1;
-}
-
-message CoinDataResponse {
-  string status = 3;
-  string error_message = 4;
-  string data = 5;
 }
 
 message HistoricalDataRequest {
@@ -23,8 +17,8 @@ message HistoricalDataRequest {
     string end_date = 3;
 }
 
-message HistoricalDataResponse {
-    string status = 1;
-    string error_message = 2;
-    string data = 3;
+message DataResponse {
+  string status = 1;
+  string error_message = 2;
+  string data = 3;
 }
