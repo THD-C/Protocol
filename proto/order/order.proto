@@ -11,6 +11,7 @@ service Order {
   rpc CreateOrder(OrderDetails) returns (OrderDetails);
   rpc DeleteOrder(OrderID) returns (OrderDetails);
   rpc GetOrder(OrderID) returns (OrderDetails);
+  rpc GetOrders(OrderID) returns (OrderList);
   rpc GetOrderList(UserID) returns (OrderList);
   rpc UpdateOrder(OrderDetails) returns (OrderDetails);
 }
@@ -62,6 +63,24 @@ message OrderID {
 message UserID {
   // Unique string ID of the order to delete.
   string id = 1;
+}
+
+// Filters which can be applied to the list of orders.
+message OrderFilter {
+  // Owner's user_id.
+  string user_id = 1;
+
+  //Wallet_id of crypto or Fiat wallet
+  string wallet_id = 2;
+  
+  // Status of the order to filter by.
+  OrderStatus status = 3;
+
+  // Type of the order to filter by.
+  OrderType type = 4;
+
+  // Side of the order to filter by.
+  OrderSide side = 5;
 }
 
 // Represents a list of order messages.
