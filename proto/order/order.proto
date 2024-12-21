@@ -11,7 +11,7 @@ service Order {
   rpc CreateOrder(OrderDetails) returns (OrderDetails);
   rpc DeleteOrder(OrderID) returns (OrderDetails);
   rpc GetOrder(OrderID) returns (OrderDetails);
-  rpc GetOrders(OrderID) returns (OrderList);
+  rpc GetOrders(OrderFilter) returns (OrderList);
   rpc GetOrderList(UserID) returns (OrderList);
   rpc UpdateOrder(OrderDetails) returns (OrderDetails);
 }
