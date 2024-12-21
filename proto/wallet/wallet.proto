@@ -23,6 +23,9 @@ message Wallet {
 
   //string ID of the wallet's owner
   string user_id = 4;
+
+  //is this wallet a crypto currency wallet
+  bool is_crypto = 5;
 }
 
 // Represents a list of Wallet messages.
