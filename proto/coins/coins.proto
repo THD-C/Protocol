@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package coins;
 
+import "google/protobuf/struct.proto";
+
 service Coins {
   rpc GetCoinData(CoinDataRequest) returns (DataResponse);
   rpc GetHistoricalData (HistoricalDataRequest) returns (DataResponse);
@@ -20,5 +22,5 @@ message HistoricalDataRequest {
 message DataResponse {
   string status = 1;
   string error_message = 2;
-  string data = 3;
+  google.protobuf.Struct data = 3;
 }
