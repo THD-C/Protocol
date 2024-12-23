@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package currency;
+
+enum CurrencyType {
+  CURRENCY_TYPE_NOT_SUPPORTED = 0;     // Platform does not support this currency.
+  CURRENCY_TYPE_FIAT = 1;     // Currency is FIAT.
+  CURRENCY_TYPE_CRYPTO = 2;   // Currency is crypto.
+}
