@@ -5,8 +5,8 @@ package currency;
 import "currency/currency_type.proto";
 
 service Currency {
-  rpc GetCurrencyType (CurrencyDetails) returns (CurrencyType);
-  rpc GetSupportedCurrencies (CurrencyType) returns (CurrencyList);
+  rpc GetCurrencyType (CurrencyDetails) returns (CurrencyTypeMsg);
+  rpc GetSupportedCurrencies (CurrencyTypeMsg) returns (CurrencyList);
 }
 
 // Contains name of currency which needs to be checked for type.
@@ -15,7 +15,7 @@ message CurrencyDetails {
 }
 
 // Contains a type of crypto sent for check.
-message CurrencyType {
+message CurrencyTypeMsg {
   CurrencyType type = 1;
 }
 
