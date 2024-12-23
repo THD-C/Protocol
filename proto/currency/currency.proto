@@ -4,16 +4,23 @@ package currency;
 
 import "currency/currency_type.proto";
 
-service Order {
-  rpc GetCurrencyType (CurrencyDetails) returns (CurrencyTypeResponse);
+service Currency {
+  rpc GetCurrencyType (CurrencyDetails) returns (CurrencyType);
+  rpc GetSupportedCurrencies (CurrencyType) returns (CurrencyList);
 }
 
-//Contains name of currency which needs to be checked for type.
-message CurrencyDetails{
+// Contains name of currency which needs to be checked for type.
+message CurrencyDetails {
   string currency_name = 1;
 }
 
-//Contains a type of crypto sent for check.
-message CurrencyTypeResponse{
+// Contains a type of crypto sent for check.
+message CurrencyType {
   CurrencyType type = 1;
+}
+
+// Represents a currency list
+message CurrencyList {
+  // Repeated field containing multiple Currency messages.
+  repeated CurrencyDetails currencies = 1;
 }
