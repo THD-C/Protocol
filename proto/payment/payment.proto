@@ -4,6 +4,8 @@ package payment;
 
 import "payment/payment_state.proto";
 
+option go_package = "order_service/Protocol/proto/payment";
+
 service Payment {
     rpc CreatePayment (PaymentDetails) returns (PaymentDetails);
     rpc UpdatePayment (PaymentDetails) returns (PaymentDetails);

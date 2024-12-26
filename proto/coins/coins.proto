@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package coins;
 
+option go_package = "order_service/Protocol/proto/coins";
+
 import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
 

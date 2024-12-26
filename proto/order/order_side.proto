@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package order;
 
+option go_package = "order_service/Protocol/proto/order";
+
 enum OrderSide {
   ORDER_SIDE_UNDEFINED = 0;
   ORDER_SIDE_BUY = 1;

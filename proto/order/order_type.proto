@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package order;
 
+option go_package = "order_service/Protocol/proto/order";
+
 enum OrderType {
   ORDER_TYPE_UNDEFINED = 0;     // Undefined state
   ORDER_TYPE_STOP_LOSS = 1;     // Sell when a certain price below current price is reached.

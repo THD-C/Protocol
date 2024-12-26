@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package user;
 
+option go_package = "order_service/Protocol/proto/user";
+
 // Detailed information about the user, typically used for profile or identity verification.
 message UserDetail {
   // Unique string ID for user details. Can be opaque and encoded if necessary.
