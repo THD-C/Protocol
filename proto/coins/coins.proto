@@ -10,6 +10,7 @@ import "google/protobuf/timestamp.proto";
 service Coins {
   rpc GetCoinData(CoinDataRequest) returns (DataResponse);
   rpc GetHistoricalData (HistoricalDataRequest) returns (DataResponse);
+  rpc GetAllCoinsPrices (AllCoinsPricesRequest) returns (DataResponse);
 }
 
 message CoinDataRequest {
@@ -26,4 +27,7 @@ message DataResponse {
   string status = 1;
   string error_message = 2;
   google.protobuf.Struct data = 3;
+}
+
+message AllCoinsPricesRequest {
 }
