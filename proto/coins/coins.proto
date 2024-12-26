@@ -11,6 +11,7 @@ service Coins {
   rpc GetCoinData(CoinDataRequest) returns (DataResponse);
   rpc GetHistoricalData (HistoricalDataRequest) returns (DataResponse);
   rpc GetAllCoinsPrices (AllCoinsPricesRequest) returns (DataResponse);
+  rpc GetListDataForAllCoins (ListDataForAllCoinsRequest) returns (ListDataForAllCoinsResponse);
 }
 
 message CoinDataRequest {
@@ -32,4 +33,14 @@ message DataResponse {
 }
 
 message AllCoinsPricesRequest {
+}
+
+message ListDataForAllCoinsRequest {
+  string fiat_currency = 1;
+}
+
+message ListDataForAllCoinsResponse {
+  string status = 1;
+  string error_message = 2;
+  repeated google.protobuf.Struct data = 3;
 }
