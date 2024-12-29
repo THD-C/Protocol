@@ -10,6 +10,7 @@ service Wallets{
   rpc DeleteWallet (WalletID) returns (Wallet);
   rpc GetWallet (WalletID) returns (Wallet);
   rpc GetUsersWallets (UserID) returns (WalletList);
+  rpc GetAllWallets (Empty) returns (WalletList);
 }
 
 // Represents a user's wallet containing currency and its balance.
@@ -43,3 +44,6 @@ message UserID {
 message WalletID {
   string id = 1;
 }
+
+message Empty{}
+
