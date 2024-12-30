@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package blog;
+
+service Blog{
+  // If message is empty returns all blogs
+  rpc GetBlogs (FilterBlogMessage) returns (BlogList);
+
+  // Request message contains updated content of a blog
+  rpc UpdateBlog (BlogContent) returns (BlogContent);
+
+  // If path passed, blog is deleted
+  rpc DeleteBlog (FilterBlogMessage) returns (BlogContent);
+
+  // path is not mandatory
+  rpc AddBlog (BlogContent) returns (BlogContent);
+}
+
+// Can filter blogs with parameters combined
+message FilterBlogMessage {
+  string title = 1;
+  string language = 2;
+  string path = 3;
+}
+
+// Represent single blog
+message BlogContent {
+  string title = 1;
+  string language = 2;
+  string path = 3;
+  string content = 4;
+}
+
+message BlogList {
+  repeated BlogContent Blogs = 1;
+}
+
+
