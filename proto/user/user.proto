@@ -4,6 +4,8 @@ package user;
 
 option go_package = "order_service/Protocol/proto/user";
 
+import "user/user_type.proto";
+
 service User {
     rpc Authenticate (AuthUser) returns (AuthResponse);
     rpc Register (RegUser) returns (RegResponse);
@@ -43,6 +45,8 @@ message AuthResponse {
     string id = 2;
     string email = 3;
     string username = 4;
+
+    UserType user_type = 5;
 }
 
 message RegResponse {
@@ -61,6 +65,8 @@ message ReqUpdateUser {
     string city = 8;
     string postal_code = 9;
     string country = 10;
+
+    UserType user_type = 11;
 }
 
 message ResultResponse {
