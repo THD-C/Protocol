@@ -13,6 +13,8 @@ service User {
     rpc Update (ReqUpdateUser) returns (ResultResponse);
     rpc Delete (ReqDeleteUser) returns (ResultResponse);
     rpc ChangePassword (ChangePass) returns (ResultResponse);
+    // Returns all registered users (used only by admins)
+    rpc GetAllUsers (AllUsersRequest) returns (UsersList);
 }
 
 message ChangePass {
@@ -97,4 +99,19 @@ message UserDetails {
     string country = 10;
 
     UserType user_type = 11;
+}
+
+message AllUsersRequest {
+
+}
+
+message UserAdministrativeData {
+    string id = 1;
+    string email = 2;
+    string username = 3;
+    UserType user_type = 4;
+}
+
+message UsersList {
+    repeated UserAdministrativeData user_data = 1;
 }
