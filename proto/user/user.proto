@@ -95,4 +95,6 @@ message UserDetails {
     string city = 8;
     string postal_code = 9;
     string country = 10;
+
+    UserType user_type = 11;
 }
