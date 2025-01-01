@@ -10,6 +10,7 @@ import "google/protobuf/timestamp.proto";
 service Coins {
   rpc GetCoinData(CoinDataRequest) returns (DataResponse);
   rpc GetHistoricalData (HistoricalDataRequest) returns (DataResponse);
+  rpc GetHistoricalCandleData (HistoricalDataRequest) returns (DataResponse);
   rpc GetAllCoinsPrices (AllCoinsPricesRequest) returns (DataResponse);
   rpc GetListDataForAllCoins (ListDataForAllCoinsRequest) returns (ListDataForAllCoinsResponse);
 }
@@ -44,3 +45,5 @@ message ListDataForAllCoinsResponse {
   string error_message = 2;
   repeated google.protobuf.Struct data = 3;
 }
+
+
