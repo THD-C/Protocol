@@ -106,7 +106,7 @@ message AllUsersRequest {
 }
 
 message UserAdministrativeData {
-    string id = 1;
+    string ID = 1;
     string email = 2;
     string username = 3;
     UserType user_type = 4;
