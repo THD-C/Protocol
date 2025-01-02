@@ -3,7 +3,8 @@ syntax = "proto3";
 package user;
 
 enum UserType {
-    USER_TYPE_STANDARD_USER = 0;    // Can only display Blog 
-    USER_TYPE_BLOGGER_USER = 1;     // Can edit and create Blog
-    USER_TYPE_SUPER_ADMIN_USER = 2; // Can do same as Blogger and also manage users
+    USER_TYPE_NO_ACTION = 0;        // Default value, which indicates no action on user type
+    USER_TYPE_STANDARD_USER = 1;    // Can only display Blog 
+    USER_TYPE_BLOGGER_USER = 2;     // Can edit and create Blog
+    USER_TYPE_SUPER_ADMIN_USER = 3; // Can do same as Blogger and also manage users
 }
