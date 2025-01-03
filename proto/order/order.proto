@@ -10,11 +10,23 @@ import "order/order_side.proto";
 import "google/protobuf/timestamp.proto";
 
 service Order {
+
+  // Create a new order.
   rpc CreateOrder(OrderDetails) returns (OrderDetails);
+
+  // Delete an existing order.
   rpc DeleteOrder(OrderID) returns (OrderDetails);
+
+  // Get single order based on Order ID
   rpc GetOrder(OrderID) returns (OrderDetails);
+
+  // Get all orders based on filter
   rpc GetOrders(OrderFilter) returns (OrderList);
+
+  // Get all orders based on user ID
   rpc GetOrderList(UserID) returns (OrderList);
+
+  // Update an existing order based on order ID.
   rpc UpdateOrder(OrderDetails) returns (OrderDetails);
 }
 

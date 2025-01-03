@@ -16,23 +16,23 @@ service Blog{
   rpc AddBlog (BlogContent) returns (BlogContent);
 }
 
-// Can filter blogs with parameters combined
+// Can filter blogs with parameters combined. If * is used, the search is done with "*<provided_value>*"
 message FilterBlogMessage {
-  string title = 1;
-  string language = 2;
-  string path = 3;
+  string title = 1; // Title of the blog
+  string language = 2; // Language of the blog
+  string path = 3; // Path of the blog
 }
 
 // Represent single blog
 message BlogContent {
-  string title = 1;
-  string language = 2;
-  string path = 3;
-  string content = 4;
+  string title = 1;     // Title of the blog
+  string language = 2;  // Language of the blog
+  string path = 3;      // Path of the blog
+  string content = 4;   // Content of the blog
 }
 
 message BlogList {
-  repeated BlogContent Blogs = 1;
+  repeated BlogContent Blogs = 1; // List of blogs
 }
 
 

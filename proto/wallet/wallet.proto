@@ -5,11 +5,23 @@ package wallet;
 option go_package = "order_service/Protocol/proto/wallet";
 
 service Wallets{
+
+  // Create a new wallet for a user.
   rpc CreateWallet (Wallet) returns (Wallet);
+
+  // Update an existing wallet.
   rpc UpdateWallet (Wallet) returns (Wallet);
+
+  // Delete a wallet.
   rpc DeleteWallet (WalletID) returns (Wallet);
+
+  // Get a wallet by its ID.
   rpc GetWallet (WalletID) returns (Wallet);
+
+  // Get all wallets associated with a user.
   rpc GetUsersWallets (UserID) returns (WalletList);
+
+  // Get all wallets.
   rpc GetAllWallets (Empty) returns (WalletList);
 }
 
@@ -37,13 +49,17 @@ message WalletList {
   repeated Wallet wallets = 1;
 }
 
+
+// Filter, which can be used to provide User ID
 message UserID {
   string id = 1;
 }
 
+// Filter, which can be used to provide Wallet ID
 message WalletID {
   string id = 1;
 }
 
+// Empty message
 message Empty{}
 

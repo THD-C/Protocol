@@ -7,54 +7,73 @@ option go_package = "order_service/Protocol/proto/user";
 import "user/user_type.proto";
 
 service User {
+
+    // Authenticate user
     rpc Authenticate (AuthUser) returns (AuthResponse);
+
+    // Register new user
     rpc Register (RegUser) returns (RegResponse);
+
+    // Get user details
     rpc GetUserDetails (ReqGetUserDetails) returns (UserDetails);
+
+    // Update user data
     rpc Update (ReqUpdateUser) returns (ResultResponse);
+
+    // Delete user
     rpc Delete (ReqDeleteUser) returns (ResultResponse);
+
+    // Change user password
     rpc ChangePassword (ChangePass) returns (ResultResponse);
+
     // Returns all registered users (used only by admins)
     rpc GetAllUsers (AllUsersRequest) returns (UsersList);
 }
 
+// Request to change user password
 message ChangePass {
     string login = 1;
     string old_password = 2;
     string new_password = 3;
 }
 
+// Request to register new user
 message RegUser {
-    string username = 1;
-    string email = 2;
-    string password = 3;
+    string username = 1; // Username - can be used to login
+    string email = 2; // Email - can be used to login
+    string password = 3; // Password - used to authenticate user
 
-    string name = 4;
-    string surname = 5;
-    string street = 6;
-    string building = 7;
-    string city = 8;
-    string postal_code = 9;
-    string country = 10;
+    string name = 4; // Name of the user
+    string surname = 5; // Surname of the user
+    string street = 6; // Street name
+    string building = 7; // Building number
+    string city = 8; // City
+    string postal_code = 9; // Postal code
+    string country = 10; // Country
 }
 
+// Request to authenticate user
 message AuthUser {
-    string login = 1;
-    string password = 2;
+    string login = 1; // Username or email
+    string password = 2; // Password
 }
 
+// Response to indicate the status of the authentication
 message AuthResponse {
-    bool success = 1;
-    string id = 2;
-    string email = 3;
-    string username = 4;
+    bool success = 1; // True if user is authenticated
+    string id = 2; // ID of the user
+    string email = 3; // Email of the user
+    string username = 4; // Username of the user
 
-    UserType user_type = 5;
+    UserType user_type = 5; // Type of the user
 }
 
+// Response to indicate the status of the registration
 message RegResponse {
-    bool success = 1;
+    bool success = 1; // True if user is registered
 }
 
+// Request to update user data
 message ReqUpdateUser {
     string id = 1;
     string email = 2;
@@ -71,19 +90,23 @@ message ReqUpdateUser {
     UserType user_type = 11;
 }
 
+// Response to indicate the status and ID of the user which has been updated
 message ResultResponse {
     bool success = 1;
     string id = 2;
 }
 
+// Request to delete user by user ID
 message ReqDeleteUser {
     string id = 1;
 }
 
+// Request to get user details by user ID
 message ReqGetUserDetails {
     string id = 1;
 }
 
+// Represents user details
 message UserDetails {
     string username = 1;
     string email = 2;
@@ -99,10 +122,12 @@ message UserDetails {
     UserType user_type = 11;
 }
 
+// Empty message to get all users
 message AllUsersRequest {
 
 }
 
+// Represents user administrative data
 message UserAdministrativeData {
     string ID = 1;
     string email = 2;
@@ -110,6 +135,7 @@ message UserAdministrativeData {
     UserType user_type = 4;
 }
 
+// Represents a list of users
 message UsersList {
     repeated UserAdministrativeData user_data = 1;
 }

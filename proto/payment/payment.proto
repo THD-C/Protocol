@@ -7,13 +7,23 @@ import "payment/payment_state.proto";
 option go_package = "order_service/Protocol/proto/payment";
 
 service Payment {
+    // Create a new payment.
     rpc CreatePayment (PaymentDetails) returns (PaymentDetails);
+    
+    // Updates an existing payment.
     rpc UpdatePayment (PaymentDetails) returns (PaymentDetails);
+
+    // Get all payments associated with provided User ID
     rpc GetPayments (UserID) returns (PaymentList);
+    
+    // Get single payment based on Payment ID
     rpc GetPayment (PaymentID) returns (PaymentDetails);
+
+    // Get all unpaid payments
     rpc GetUnpaidPayments (UnpaidSessions) returns (PaymentList);
 }
 
+// Represents made payment
 message PaymentDetails {
     string id = 1;
     string user_id = 2;
@@ -22,18 +32,22 @@ message PaymentDetails {
     PaymentState state = 5;
 }
 
+// Filter, which can be used to provide User ID
 message UserID {
     string user_id = 1;
 }
 
+// Filter, which can be used to provide Payment ID
 message PaymentID {
     string id = 1;
 }
 
+// Represents a list of payments
 message PaymentList {
     repeated PaymentDetails payments = 1;
 }
 
+// Filter, which can be used to provide unpaid payments
 message UnpaidSessions{
     bool unpaid = 1;
 }

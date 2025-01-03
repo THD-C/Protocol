@@ -7,22 +7,24 @@ option go_package = "order_service/Protocol/proto/currency";
 import "currency/currency_type.proto";
 
 service Currency {
+  // Returns type of provided currency.
   rpc GetCurrencyType (CurrencyDetails) returns (CurrencyTypeMsg);
+
+  // Returns list of currencies in a given type.
   rpc GetSupportedCurrencies (CurrencyTypeMsg) returns (CurrencyList);
 }
 
 // Contains name of currency which needs to be checked for type.
 message CurrencyDetails {
-  string currency_name = 1;
+  string currency_name = 1; // Name of the currency
 }
 
 // Contains a type of crypto sent for check.
 message CurrencyTypeMsg {
-  CurrencyType type = 1;
+  CurrencyType type = 1; 
 }
 
 // Represents a currency list
 message CurrencyList {
-  // Repeated field containing multiple Currency messages.
-  repeated CurrencyDetails currencies = 1;
+  repeated CurrencyDetails currencies = 1; // List of currencies
 }
